@@ -23,6 +23,7 @@ public class Febuary_23 {
         Map<String, Integer> strMap = new HashMap<String, Integer>();
         int[] answer = new int[strArr.length];
         
+        
         for(int i=0; i<strArr.length; i++){
             
             if(strMap.get(strArr[i]) == null){
