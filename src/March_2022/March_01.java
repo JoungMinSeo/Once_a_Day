@@ -1,0 +1,63 @@
+package March_2022;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class March_01 {
+
+	
+	//	두 정수 X, Y의 임의의 자리에서 공통으로 나타나는 정수 k(0 ≤ k ≤ 9)들을 이용하여 만들 수 있는 가장 큰 정수를 두 수의 짝꿍이라 합니다(단, 공통으로 나타나는 정수 중 서로 짝지을 수 있는 숫자만 사용합니다). 
+	//	X, Y의 짝꿍이 존재하지 않으면, 짝꿍은 -1입니다. X, Y의 짝꿍이 0으로만 구성되어 있다면, 짝꿍은 0입니다.
+	//
+	//	예를 들어, X = 3403이고 Y = 13203이라면, X와 Y의 짝꿍은 X와 Y에서 공통으로 나타나는 3, 0, 3으로 만들 수 있는 가장 큰 정수인 330입니다. 
+	//	다른 예시로 X = 5525이고 Y = 1255이면 X와 Y의 짝꿍은 X와 Y에서 공통으로 나타나는 2, 5, 5로 만들 수 있는 가장 큰 정수인 552입니다(X에는 5가 3개, Y에는 5가 2개 나타나므로 남는 5 한 개는 짝 지을 수 없습니다.)
+	//	두 정수 X, Y가 주어졌을 때, X, Y의 짝꿍을 return하는 solution 함수를 완성해주세요.
+	
+	public String solution(String X, String Y) {
+        Map<String, Integer> xMap = new HashMap<String, Integer>();
+        Map<String, Integer> yMap = new HashMap<String, Integer>();
+        
+        List<String> list = new ArrayList<String>();
+        
+        for(String key: X.split("")) {
+            xMap.put(key, xMap.getOrDefault(key, 0)+1);
+        }
+        
+        for(String key: Y.split("")) {
+            yMap.put(key, yMap.getOrDefault(key, 0)+1);
+        }
+        
+        for(String key: xMap.keySet()) {
+            if(!yMap.containsKey(key)) continue;
+            
+            int length = Math.min(xMap.get(key), yMap.get(key));
+            for(int i = 0; i < length; i++) {
+                list.add(key);
+            }
+        }
+        
+        String result = list.stream()
+            .sorted(Collections.reverseOrder())
+            .collect(Collectors.joining());
+        
+        if(result.isEmpty()) return "-1";
+        if(result.replaceAll("0", "").isEmpty()) return "0";
+        
+        
+        return result;
+    }
+	
+	public static void main(String[] args) {
+		
+		March_01 m01 = new March_01();
+		
+		System.out.println(m01.solution("100", "2345"));
+		
+	}
+	
+	
+}
