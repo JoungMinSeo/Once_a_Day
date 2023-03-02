@@ -1,9 +1,11 @@
 package February_2022;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Febuary_23 {
-
+// 프로그래머스 - 가장 가까운 같은 글자
+public class Febuary_28 {
 	
 	// 문자열 s가 주어졌을 때, s의 각 위치마다 자신보다 앞에 나왔으면서, 자신과 가장 가까운 곳에 있는 같은 글자가 어디 있는지 알고 싶습니다.
 	// 예를 들어, s="banana"라고 할 때,  각 글자들을 왼쪽부터 오른쪽으로 읽어 나가면서 다음과 같이 진행할 수 있습니다.
@@ -39,9 +41,9 @@ public class Febuary_23 {
     }
 	
 	public static void main(String[] args) {
-		Febuary_23 fe23 = new Febuary_23();
+		Febuary_28 fe28 = new Febuary_28();
 		
-		System.out.println(Arrays.toString(fe23.solution("banana")));
+		System.out.println(Arrays.toString(fe28.solution("banana")));
 		
 	}
 	
